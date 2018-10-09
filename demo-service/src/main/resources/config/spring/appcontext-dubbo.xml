@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--应用名称-->
+    <dubbo:application name="dubbo-provider-demo-service" owner="trade" organization="mgo"/>
+    <!--使用 zookeeper 注册中心暴露服务-->
+    <dubbo:registry address="${dubbo.zookeeper}"/>
+    <!-- 用dubbo协议在指定端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
+
+    <!--使用 dubbo 协议实现定义好的 api.PermissionService 接口-->
+    <dubbo:service interface="cn.mobilemart.demo.api.EchoService" ref="echoService"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+    <dubbo:service interface="cn.mobilemart.demo.api.PassengerService" ref="passengerService"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+
+
+    <!--注册dubbo接口-->
+    <dubbo:service interface="cn.mobilemart.demo.api.EchoService" ref="echoService"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+
+    <dubbo:service interface="cn.mobilemart.demo.api.PassengerService" ref="passengerService"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+
+    <dubbo:service interface="cn.mobilemart.demo.api.DemoNotifyService" ref="demoNotifyService"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+
+
+    <!--具体实现该接口的 bean-->
+    <bean id="echoService" class="cn.mobilemart.demo.service.impl.EchoServiceImpl"/>
+
+    <bean id="demoNotifyService" class="cn.mobilemart.demo.service.impl.DemoNotifyServiceImpl"/>
+
+
+    <dubbo:monitor address="${dubbo.monitor.addr}"/>
+
+</beans>

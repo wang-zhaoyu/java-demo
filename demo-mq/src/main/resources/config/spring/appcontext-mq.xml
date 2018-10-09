@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="msgListener" class="cn.mobilemart.demo.mq.listener.DemoNotifyMessageListener"></bean>
+    <!--Listener 配置-->
+    <!-- 多 CID 订阅同一个 Topic，可以创建多个 ConsumerBean-->
+    <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" init-method="start"
+          destroy-method="shutdown">
+        <property name="properties"> <!--消费者配置信息-->
+            <props>
+                <prop key="ConsumerId">${mq.consumerId}</prop>
+                <prop key="AccessKey">${mq.AccessKey}</prop>
+                <prop key="SecretKey">${mq.SecretKey}</prop>
+                <prop key="SendMsgTimeoutMillis">${mq.SendMsgTimeoutMillis}</prop>
+                <prop key="ONSAddr">${mq.ONSAddr}</prop>
+                <prop key="ConsumeThreadNums">${mq.ConsumeThreadNums}</prop>
+            </props>
+        </property>
+        <property name="subscriptionTable">
+            <map>
+                <entry value-ref="msgListener">
+                    <key>
+                        <bean class="com.aliyun.openservices.ons.api.bean.Subscription">
+                            <property name="topic" value="${mq.demo_success_topic}"/>
+                            <property name="expression" value="*"/>
+                        </bean>
+                    </key>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
