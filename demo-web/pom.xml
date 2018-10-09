@@ -32,11 +32,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-client</artifactId>
-            <version>2.6.36</version>
-        </dependency>
         <!-- Zookeeper zkclient-->
         <dependency>
             <groupId>com.github.sgroschupf</groupId>

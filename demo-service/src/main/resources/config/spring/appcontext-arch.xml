@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans profile="test">
+        <bean id="properties_test" class="cn.mobilemart.demo.service.common.MyPropertyPlaceholder">
+            <property name="locations">
+                <list>
+                    <value>classpath*:config/dubbo/dubbo.test.properties</value>
+                    <value>classpath*:config/jdbc/jdbc.test.properties</value>
+                    <value>classpath*:config/mq/mq.test.properties</value>
+                </list>
+            </property>
+        </bean>
+    </beans>
+
+    <beans profile="prod">
+        <bean id="properties_prod" class="cn.mobilemart.demo.service.common.MyPropertyPlaceholder">
+            <property name="locations">
+                <list>
+                    <value>classpath*:config/dubbo/dubbo.prod.properties</value>
+                    <value>classpath*:config/jdbc/jdbc.prod.properties</value>
+                    <value>classpath*:config/mq/mq.prod.properties</value>
+                </list>
+            </property>
+        </bean>
+    </beans>
+
+</beans>
