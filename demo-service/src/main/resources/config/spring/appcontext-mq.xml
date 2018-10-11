@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean" init-method="start"
+    <!--<bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean" init-method="start"
           destroy-method="shutdown">
-        <!-- Spring 接入方式支持 Java SDK 支持的所有配置项 -->
-        <property name="properties"><!--生产者配置信息-->
+        &lt;!&ndash; Spring 接入方式支持 Java SDK 支持的所有配置项 &ndash;&gt;
+        <property name="properties">&lt;!&ndash;生产者配置信息&ndash;&gt;
             <props>
                 <prop key="ProducerId">${mq.producerId}</prop>
                 <prop key="AccessKey">${mq.AccessKey}</prop>
@@ -15,5 +15,5 @@
                 <prop key="ONSAddr">${mq.ONSAddr}</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 </beans>

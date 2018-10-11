@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.web.common;
+package cn.joey.demo.web.common;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

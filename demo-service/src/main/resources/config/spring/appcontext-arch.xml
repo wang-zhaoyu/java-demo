@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <beans profile="test">
-        <bean id="properties_test" class="cn.mobilemart.demo.service.common.MyPropertyPlaceholder">
+        <bean id="properties_test" class="cn.joey.demo.service.common.MyPropertyPlaceholder">
             <property name="locations">
                 <list>
                     <value>classpath*:config/dubbo/dubbo.test.properties</value>
@@ -16,7 +16,7 @@
     </beans>
 
     <beans profile="prod">
-        <bean id="properties_prod" class="cn.mobilemart.demo.service.common.MyPropertyPlaceholder">
+        <bean id="properties_prod" class="cn.joey.demo.service.common.MyPropertyPlaceholder">
             <property name="locations">
                 <list>
                     <value>classpath*:config/dubbo/dubbo.prod.properties</value>

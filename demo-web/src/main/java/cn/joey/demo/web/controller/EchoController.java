@@ -1,9 +1,9 @@
 package cn.joey.demo.web.controller;
 
-import cn.mobilemart.demo.api.EchoService;
-import cn.mobilemart.demo.web.common.ErrorCode;
-import cn.mobilemart.demo.web.common.MyPropertyPlaceholder;
-import cn.mobilemart.demo.web.common.Response;
+import cn.joey.demo.api.EchoService;
+import cn.joey.demo.web.common.ErrorCode;
+import cn.joey.demo.web.common.MyPropertyPlaceholder;
+import cn.joey.demo.web.common.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

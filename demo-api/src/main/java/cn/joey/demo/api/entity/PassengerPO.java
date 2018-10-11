@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.api.entity;
+package cn.joey.demo.api.entity;
 
 import java.io.Serializable;
 import java.util.Date;

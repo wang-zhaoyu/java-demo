@@ -15,12 +15,9 @@
     <dubbo:monitor address="${dubbo.monitor.addr}" />
 
     <!-- 生成远程服务代理，可以和本地bean一样使用Service -->
-    <dubbo:reference id="echoService" interface="cn.mobilemart.demo.api.EchoService"
+    <dubbo:reference id="echoService" interface="cn.joey.demo.api.EchoService"
                      timeout="${dubbo.timeout}" version="1.0" group="${dubbo.group}"/>
 
-    <dubbo:reference id="demoNotifyService" interface="cn.mobilemart.demo.api.DemoNotifyService"
-                     timeout="${dubbo.timeout}" version="1.0" group="${dubbo.group}"/>
-
-    <dubbo:reference id="passengerService" interface="cn.mobilemart.demo.api.PassengerService"
+    <dubbo:reference id="demoNotifyService" interface="cn.joey.demo.api.DemoNotifyService"
                      timeout="${dubbo.timeout}" version="1.0" group="${dubbo.group}"/>
 </beans>

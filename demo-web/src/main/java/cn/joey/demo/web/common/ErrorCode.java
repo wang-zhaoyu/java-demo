@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.web.common;
+package cn.joey.demo.web.common;
 
 /**
 * @Description: 接口返回错误码定义

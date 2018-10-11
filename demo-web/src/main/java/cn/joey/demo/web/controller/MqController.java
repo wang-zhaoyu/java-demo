@@ -1,8 +1,8 @@
-package cn.mobilemart.demo.web.controller;
+package cn.joey.demo.web.controller;
 
-import cn.mobilemart.demo.api.DemoNotifyService;
-import cn.mobilemart.demo.web.common.ErrorCode;
-import cn.mobilemart.demo.web.common.Response;
+import cn.joey.demo.api.DemoNotifyService;
+import cn.joey.demo.web.common.ErrorCode;
+import cn.joey.demo.web.common.Response;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

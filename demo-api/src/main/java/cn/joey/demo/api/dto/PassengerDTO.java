@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.api.dto;
+package cn.joey.demo.api.dto;
 
 import lombok.Data;
 

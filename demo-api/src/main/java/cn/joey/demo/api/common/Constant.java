@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.api.common;
+package cn.joey.demo.api.common;
 /**
 * @Description: 全局变量定义
 * @Author: wangzhaoyu

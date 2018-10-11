@@ -16,7 +16,7 @@
         <param-value>test</param-value>
     </context-param>
     <listener>
-        <listener-class>cn.mobilemart.demo.mq.common.DefaultProfileListener</listener-class>
+        <listener-class>cn.joey.demo.mq.common.DefaultProfileListener</listener-class>
     </listener>
 
     <context-param>

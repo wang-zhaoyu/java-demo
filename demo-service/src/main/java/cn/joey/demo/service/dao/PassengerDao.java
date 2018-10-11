@@ -1,6 +1,6 @@
-package cn.mobilemart.demo.service.dao;
+package cn.joey.demo.service.dao;
 
-import cn.mobilemart.demo.api.entity.PassengerPO;
+import cn.joey.demo.api.entity.PassengerPO;
 
 /**
 * @Description:

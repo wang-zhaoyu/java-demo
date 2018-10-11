@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.web.common;
+package cn.joey.demo.web.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

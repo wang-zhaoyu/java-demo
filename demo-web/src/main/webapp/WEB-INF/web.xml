@@ -28,7 +28,7 @@
   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>
-      classpath:log4j.properties
+      classpath:config/log/log4j.${spring.profiles.active}.properties
     </param-value>
   </context-param>
   <context-param>
@@ -61,7 +61,7 @@
 
   <filter>
     <filter-name>crossDomainFilter</filter-name>
-    <filter-class>cn.mobilemart.demo.web.common.CrossDomainFilter</filter-class>
+    <filter-class>cn.joey.demo.web.common.CrossDomainFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>crossDomainFilter</filter-name>

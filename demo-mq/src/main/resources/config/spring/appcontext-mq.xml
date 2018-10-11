@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="msgListener" class="cn.mobilemart.demo.mq.listener.DemoNotifyMessageListener"></bean>
+    <bean id="msgListener" class="cn.joey.demo.mq.listener.DemoNotifyMessageListener"></bean>
     <!--Listener 配置-->
     <!-- 多 CID 订阅同一个 Topic，可以创建多个 ConsumerBean-->
     <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" init-method="start"

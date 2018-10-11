@@ -1,7 +1,7 @@
-package cn.mobilemart.demo.service.impl;
+package cn.joey.demo.service.impl;
 
-import cn.mobilemart.demo.api.DemoNotifyService;
-import cn.mobilemart.demo.service.common.MyPropertyPlaceholder;
+import cn.joey.demo.api.DemoNotifyService;
+import cn.joey.demo.service.common.MyPropertyPlaceholder;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.Producer;
@@ -21,8 +21,8 @@ import java.util.Date;
 @Component
 public class DemoNotifyServiceImpl implements DemoNotifyService {
 
-    @Autowired
-    Producer producer;
+//    @Autowired
+//    Producer producer;
 
     @Override
     public Boolean notify(JSONObject msg, long millis) {
@@ -39,11 +39,11 @@ public class DemoNotifyServiceImpl implements DemoNotifyService {
             log.debug("预计发送时间:{}", new Date(delayTime).toString());
             message.setStartDeliverTime(delayTime);
 
-            SendResult sendResult = producer.send(message);
+//            SendResult sendResult = producer.send(message);
             // 同步发送消息，只要不抛异常就是成功
-            if (sendResult != null) {
-                log.debug("发送消息成功,topic={},msgId={}", message.getTopic(), sendResult.getMessageId());
-            }
+//            if (sendResult != null) {
+//                log.debug("发送消息成功,topic={},msgId={}", message.getTopic(), sendResult.getMessageId());
+//            }
             return true;
         } catch (Exception e) {
             // 消息发送失败，需要进行重试处理，可重新发送这条消息或持久化这条数据进行补偿处理

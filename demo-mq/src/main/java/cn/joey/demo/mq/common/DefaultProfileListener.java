@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.mq.common;
+package cn.joey.demo.mq.common;
 
 import org.apache.commons.lang3.StringUtils;
 

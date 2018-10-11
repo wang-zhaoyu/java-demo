@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.service.common;
+package cn.joey.demo.service.common;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;

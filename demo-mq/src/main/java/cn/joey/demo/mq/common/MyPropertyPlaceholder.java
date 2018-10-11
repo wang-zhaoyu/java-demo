@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.mq.common;
+package cn.joey.demo.mq.common;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

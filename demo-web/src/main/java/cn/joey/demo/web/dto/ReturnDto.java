@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.web.dto;
+package cn.joey.demo.web.dto;
 
 /**
  * 接口返回统一类

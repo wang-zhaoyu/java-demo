@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.mq.listener;
+package cn.joey.demo.mq.listener;
 
 import com.aliyun.openservices.ons.api.Action;
 import com.aliyun.openservices.ons.api.ConsumeContext;

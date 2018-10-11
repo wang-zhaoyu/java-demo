@@ -1,6 +1,6 @@
-package cn.mobilemart.demo.service.impl;
+package cn.joey.demo.service.impl;
 
-import cn.mobilemart.demo.api.EchoService;
+import cn.joey.demo.api.EchoService;
 import lombok.extern.slf4j.Slf4j;
 
 /**

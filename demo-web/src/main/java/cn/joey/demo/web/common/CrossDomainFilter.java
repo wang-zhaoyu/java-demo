@@ -1,4 +1,4 @@
-package cn.mobilemart.demo.web.common;
+package cn.joey.demo.web.common;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
