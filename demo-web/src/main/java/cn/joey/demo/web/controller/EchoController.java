@@ -1,17 +1,19 @@
 package cn.joey.demo.web.controller;
 
 import cn.joey.demo.api.EchoService;
+import cn.joey.demo.api.UserSerivce;
+import cn.joey.demo.api.entity.UserPO;
 import cn.joey.demo.web.common.ErrorCode;
 import cn.joey.demo.web.common.MyPropertyPlaceholder;
 import cn.joey.demo.web.common.Response;
+import cn.joey.demo.web.vo.UserAddVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,6 +29,8 @@ public class EchoController {
 
     @Autowired
     private EchoService echoService;
+    @Autowired
+    private UserSerivce userSerivce;
 
     /**
      * http://localhost:8090/demo/echo?param=12345678
@@ -43,6 +47,30 @@ public class EchoController {
         result.setError_code(ErrorCode.SUCCESS.code);
         result.setErr_msg(ErrorCode.SUCCESS.message);
         result.setData(data);
+        return result;
+    }
+
+    @RequestMapping(value = "/allUser", method = RequestMethod.GET)
+    @ResponseBody
+    public Response echo() {
+        Response<List<UserPO>> result = new Response<>();
+        List<UserPO> allUser = userSerivce.getAllUser();
+        result.setError_code(ErrorCode.SUCCESS.code);
+        result.setErr_msg(ErrorCode.SUCCESS.message);
+        result.setData(allUser);
+        return result;
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @ResponseBody
+    public Response addUser(@RequestBody UserAddVO userAddVO) {
+        Response<List<UserPO>> result = new Response<>();
+        UserPO userPO = new UserPO();
+        userPO.setUserName(userAddVO.getUserName());
+        userPO.setAge(userAddVO.getAge());
+        userSerivce.addUser(userPO);
+        result.setError_code(ErrorCode.SUCCESS.code);
+        result.setErr_msg(ErrorCode.SUCCESS.message);
         return result;
     }
 

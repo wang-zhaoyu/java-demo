@@ -44,14 +44,14 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="typeAliasesPackage" value="cn.joey.demo.api.entity;cn.joey.demo.api.dto"/>-->
-        <!--<property name="mapperLocations" value="classpath*:mapper/*Dao.xml"/>-->
+        <property name="typeAliasesPackage" value="cn.joey.demo.api.entity"/>
+        <property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"/>
     </bean>
 
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.joey.demo.service.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>-->
+    </bean>
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -64,6 +64,5 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
 
 </beans>

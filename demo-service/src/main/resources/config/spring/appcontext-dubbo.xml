@@ -22,10 +22,15 @@
     <dubbo:service interface="cn.joey.demo.api.DemoNotifyService" ref="demoNotifyService"
                    protocol="dubbo" version="1.0" group="${dubbo.group}"/>
 
+    <dubbo:service interface="cn.joey.demo.api.UserSerivce" ref="userSerivce"
+                   protocol="dubbo" version="1.0" group="${dubbo.group}"/>
+
 
     <!--具体实现该接口的 bean-->
     <bean id="echoService" class="cn.joey.demo.service.impl.EchoServiceImpl"/>
 
     <bean id="demoNotifyService" class="cn.joey.demo.service.impl.DemoNotifyServiceImpl"/>
+
+    <bean id="userSerivce" class="cn.joey.demo.service.impl.UserSerivceImpl"/>
 
 </beans>
