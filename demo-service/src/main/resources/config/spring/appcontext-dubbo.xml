@@ -12,6 +12,9 @@
     <!-- 用dubbo协议在指定端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
 
+    <!-- dubbo监控平台配置 -->
+    <!--<dubbo:monitor address="${dubbo.monitor.addr}"/>-->
+
     <!--注册dubbo接口-->
     <dubbo:service interface="cn.joey.demo.api.EchoService" ref="echoService"
                    protocol="dubbo" version="1.0" group="${dubbo.group}"/>
@@ -24,8 +27,5 @@
     <bean id="echoService" class="cn.joey.demo.service.impl.EchoServiceImpl"/>
 
     <bean id="demoNotifyService" class="cn.joey.demo.service.impl.DemoNotifyServiceImpl"/>
-
-
-    <dubbo:monitor address="${dubbo.monitor.addr}"/>
 
 </beans>

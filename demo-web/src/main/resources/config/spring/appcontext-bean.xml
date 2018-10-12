@@ -12,7 +12,8 @@
     <!-- 注册中心服务地址 -->
     <dubbo:registry protocol="zookeeper" address="${dubbo.zookeeper}"/>
 
-    <dubbo:monitor address="${dubbo.monitor.addr}" />
+    <!-- dubbo监控平台配置 -->
+    <!--<dubbo:monitor address="${dubbo.monitor.addr}" />-->
 
     <!-- 生成远程服务代理，可以和本地bean一样使用Service -->
     <dubbo:reference id="echoService" interface="cn.joey.demo.api.EchoService"

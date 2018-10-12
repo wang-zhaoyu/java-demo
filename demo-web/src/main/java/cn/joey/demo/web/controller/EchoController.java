@@ -38,6 +38,8 @@ public class EchoController {
     public Response echo(@RequestParam(value = "param", required = false) String param) {
         Response<Map> result = new Response<>();
         Map<String, Object> data = new HashMap<String, Object>();
+        String echo = echoService.echo("hahaha,im comming");
+        log.info("接口调用结果为-->{}",echo);
         result.setError_code(ErrorCode.SUCCESS.code);
         result.setErr_msg(ErrorCode.SUCCESS.message);
         result.setData(data);
