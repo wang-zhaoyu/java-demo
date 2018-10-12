@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.joey.demo.service.dao.UserDao" >
+    <resultMap id="baseMap" type="cn.joey.demo.api.entity.UserPO" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.joey.demo.api.entity.UserPO">
+        insert INTO user (user_name,age)
+        VALUE
+        (#{userName,jdbcType=VARCHAR},#{age,jdbcType=INTEGER})
+    </insert>
+
+    <select id="selectAll" resultMap="baseMap">
+        select * from user
+    </select>
+</mapper>
