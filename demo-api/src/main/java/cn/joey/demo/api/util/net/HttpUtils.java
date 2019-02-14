@@ -1,4 +1,4 @@
-package cn.joey.demo.api.util;
+package cn.joey.demo.api.util.net;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;

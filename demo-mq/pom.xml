@@ -26,13 +26,6 @@
             </exclusions>
         </dependency>
 
-        <!-- Zookeeper zkclient-->
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
-        </dependency>
-
         <!--MQ-->
         <dependency>
             <groupId>com.aliyun.openservices</groupId>
