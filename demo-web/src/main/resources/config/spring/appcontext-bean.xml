@@ -24,4 +24,7 @@
 
     <dubbo:reference id="userService" interface="cn.joey.demo.api.UserSerivce"
                      timeout="${dubbo.timeout}" version="1.0" group="${dubbo.group}"/>
+
+    <dubbo:reference id="topicSendMessage" interface="cn.joey.demo.api.TopicSendMessage"
+                     timeout="${dubbo.timeout}" version="1.0" group="${dubbo.group}"/>
 </beans>

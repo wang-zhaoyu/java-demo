@@ -1,35 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.14.5.xsd">
 
-    <bean id="msgListener" class="cn.joey.demo.mq.listener.DemoNotifyMessageListener"></bean>
-    <!--Listener 配置-->
-    <!-- 多 CID 订阅同一个 Topic，可以创建多个 ConsumerBean-->
-    <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" init-method="start"
-          destroy-method="shutdown">
-        <property name="properties"> <!--消费者配置信息-->
-            <props>
-                <prop key="ConsumerId">${mq.consumerId}</prop>
-                <prop key="AccessKey">${mq.AccessKey}</prop>
-                <prop key="SecretKey">${mq.SecretKey}</prop>
-                <prop key="SendMsgTimeoutMillis">${mq.SendMsgTimeoutMillis}</prop>
-                <prop key="ONSAddr">${mq.ONSAddr}</prop>
-                <prop key="ConsumeThreadNums">${mq.ConsumeThreadNums}</prop>
-            </props>
-        </property>
-        <property name="subscriptionTable">
-            <map>
-                <entry value-ref="msgListener">
-                    <key>
-                        <bean class="com.aliyun.openservices.ons.api.bean.Subscription">
-                            <property name="topic" value="${mq.demo_success_topic}"/>
-                            <property name="expression" value="*"/>
-                        </bean>
-                    </key>
-                </entry>
-            </map>
-        </property>
+    <!--#########################activemq配置######################-->
+    <!-- 连接 activemq-->
+    <amq:connectionFactory id="amqConnectionFactory" brokerURL="${activemq_url}" userName="${activemq_username}"
+                           password="${activemq_password}"/>
+
+    <!-- 这里可以采用连接池的方式连接PooledConnectionFactoryBean -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <!-- 配置连接 -->
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"/>
+        <!-- 会话的最大连接数 -->
+        <property name="sessionCacheSize" value="100"/>
     </bean>
+
+    <!-- 定义消息队列topic类型，queue的方式差不多 -->
+    <bean id="testTopic" class="org.apache.activemq.command.ActiveMQTopic">
+        <!-- 定义名称 -->
+        <constructor-arg index="0" value="testTopic"/>
+    </bean>
+
+    <!-- 监听方式，这种方式更实用，可以一直监听消息 -->
+    <bean id="topicMessageListener" class="cn.joey.demo.mq.listener.TopicMessageListener"/>
+    <bean id="defaultMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!-- 注册activemq名称 -->
+        <property name="destination" ref="testTopic"/>
+        <property name="messageListener" ref="topicMessageListener"/>
+    </bean>
+    <!--##############################rocketmq监听配置######################-->
+    <!--<bean id="msgListener" class="cn.joey.demo.mq.listener.DemoNotifyMessageListener"></bean>-->
+    <!--&lt;!&ndash;Listener 配置&ndash;&gt;-->
+    <!--&lt;!&ndash; 多 CID 订阅同一个 Topic，可以创建多个 ConsumerBean&ndash;&gt;-->
+    <!--<bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" init-method="start"-->
+    <!--destroy-method="shutdown">-->
+    <!--<property name="properties"> &lt;!&ndash;消费者配置信息&ndash;&gt;-->
+    <!--<props>-->
+    <!--<prop key="ConsumerId">${mq.consumerId}</prop>-->
+    <!--<prop key="AccessKey">${mq.AccessKey}</prop>-->
+    <!--<prop key="SecretKey">${mq.SecretKey}</prop>-->
+    <!--<prop key="SendMsgTimeoutMillis">${mq.SendMsgTimeoutMillis}</prop>-->
+    <!--<prop key="ONSAddr">${mq.ONSAddr}</prop>-->
+    <!--<prop key="ConsumeThreadNums">${mq.ConsumeThreadNums}</prop>-->
+    <!--</props>-->
+    <!--</property>-->
+    <!--<property name="subscriptionTable">-->
+    <!--<map>-->
+    <!--<entry value-ref="msgListener">-->
+    <!--<key>-->
+    <!--<bean class="com.aliyun.openservices.ons.api.bean.Subscription">-->
+    <!--<property name="topic" value="${mq.demo_success_topic}"/>-->
+    <!--<property name="expression" value="*"/>-->
+    <!--</bean>-->
+    <!--</key>-->
+    <!--</entry>-->
+    <!--</map>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!---->
 
 </beans>

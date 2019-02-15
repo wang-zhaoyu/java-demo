@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.14.5.xsd">
+
+    <!--#########################activemq配置######################-->
+    <!-- 连接 activemq-->
+    <amq:connectionFactory id="amqConnectionFactory" brokerURL="${activemq_url}" userName="${activemq_username}"
+                           password="${activemq_password}"/>
+
+    <!-- 这里可以采用连接池的方式连接PooledConnectionFactoryBean -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <!-- 配置连接 -->
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"/>
+        <!-- 会话的最大连接数 -->
+        <property name="sessionCacheSize" value="100"/>
+    </bean>
+
+    <!-- 定义消息队列topic类型，queue的方式差不多 -->
+    <bean id="testTopic" class="org.apache.activemq.command.ActiveMQTopic">
+        <!-- 定义名称 -->
+        <constructor-arg index="0" value="testTopic"/>
+    </bean>
+
+    <!-- 配置JMS模板（topic），Spring提供的JMS工具类，它发送、接收消息。 -->
+    <!-- 为了测试发送消息，保留jmsTemplate的配置，实际不存在发送，只需要配置监听即可 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="testTopic"/>
+        <!-- 非pub/sub模型（发布/订阅），true为topic,false为queue -->
+        <property name="pubSubDomain" value="true"/>
+    </bean>
 
     <!--<bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean" init-method="start"
           destroy-method="shutdown">

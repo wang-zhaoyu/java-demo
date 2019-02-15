@@ -1,6 +1,7 @@
 package cn.joey.demo.web.controller;
 
 import cn.joey.demo.api.DemoNotifyService;
+import cn.joey.demo.api.TopicSendMessage;
 import cn.joey.demo.web.common.ErrorCode;
 import cn.joey.demo.web.common.Response;
 import com.alibaba.fastjson.JSONObject;
@@ -30,6 +31,8 @@ public class MqController {
 
     @Autowired
     private DemoNotifyService demoNotifyService;
+    @Autowired
+    private TopicSendMessage topicSendMessage;
 
 
     @RequestMapping(value = "/notify", method = RequestMethod.GET)
@@ -53,5 +56,12 @@ public class MqController {
         result.setErr_msg(ErrorCode.SUCCESS.message);
         result.setData(data);
         return result;
+    }
+
+    @RequestMapping(value = "/notify/activemq", method = RequestMethod.GET)
+    @ResponseBody
+    public Response activeMqNotify(){
+        topicSendMessage.send();
+        return Response.successResponse();
     }
 }
